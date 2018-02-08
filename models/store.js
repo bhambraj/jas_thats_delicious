@@ -35,12 +35,18 @@ const storeSchema = new mongoose.Schema({
 	photo: String
 });
 
-storeSchema.pre('save', function(next) {
+storeSchema.pre('save', async function(next) {
 	if(!this.isModified('name')) {
 		next(); // skips
 		return; // stops this function from running 
 	}
 	this.slug = slug(this.name);
+	// Find other Duplicate stores with the same slug name
+	const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+	const storesWithSlug = await this.constructor.find({ slug: slugRegEx });
+	if(storesWithSlug.length) {
+		this.slug = `${this.slug}-${storesWithSlug.length + 1}`;
+	}
 	next();
 
 	// TO-DO Make more resillient so slugs are unique
