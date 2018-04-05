@@ -29,7 +29,7 @@ exports.validateRegister = (req, res, next) => {
 		res.render('register', { title: 'Register', body: req.body, flashes: req.flash() })
 		return;
 	}
-	next();
+	next(); // No Errors found
 };
 
 exports.register = async (req, res, next) => {
