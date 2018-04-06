@@ -20,7 +20,9 @@ const userSchema = new Schema({
 		type: 'String',
 		required: true,
 		time: true
-	}
+	},
+	resetPasswordToken: 'String',
+	resetPasswordExpires: Date
 });
 
 userSchema.virtual('gravatar').get(function(){
