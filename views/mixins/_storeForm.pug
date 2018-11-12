@@ -15,10 +15,10 @@ mixin storeForm(store = {})
 		store.location && store.location.address))
 		label(for="lng") Address Lng
 		input(type="text" id="lng" name="location[coordinates][0]" value=(
-		store.location && store.location.coordinates[0]) required)
+		store.location && store.location.coordinates[0]))
 		label(for="lat") Address Lat
 		input(type="text" id="lat" name="location[coordinates][1]" value=(
-		store.location && store.location.coordinates[1]) required)
+		store.location && store.location.coordinates[1]))
 
 		- const choices = ['Wi-Fi', 'Family Friendly', 'Open Late', 'Licensed'];
 		- const tags = store.tags || []
