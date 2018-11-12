@@ -25,11 +25,11 @@ const storeSchema = new mongoose.Schema({
 		},
 		coordinates: [{
 			type: Number,
-			requied: 'You must supply Coordinated'
+			// required: 'You must supply Coordinated'
 		}],
 		address: {
 			type: String,
-			required: 'You must supply an Address!'
+			// required: 'You must supply an Address!'
 		}
 	},
 	photo: String
